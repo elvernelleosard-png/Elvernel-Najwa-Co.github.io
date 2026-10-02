@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Management Portal | Elvernel, Najwa & Co. Advocates & Solicitors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION (SAME STYLING AS PART 1)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-link">
+        <img src="assets/images/monogram.png" alt="EN Monogram" class="brand-monogram-img">
+        <div class="brand-text">
+          <span class="brand-title">ELVERNEL, NAJWA & CO.</span>
+          <span class="brand-subtitle">ADVOCATES & SOLICITORS</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline">← Return to Main Website</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       ROLE SWITCHER BAR (SIMULATING SEPARATE CLIENT & FIRM STAFF LOGINS)
+       ========================================================================== -->
+  <div class="portal-role-banner">
+    <div class="role-badge">
+      <div class="role-indicator-dot" id="roleIndicatorDot"></div>
+      <span id="roleIndicatorText" style="font-weight: 600;">Client Portal: CloudTech Solutions Sdn Bhd (Ref: EN-2026-084)</span>
+    </div>
+
+    <div class="role-switch-controls">
+      <span style="font-size: 0.72rem; color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.1em;">Test Portal Roles:</span>
+      <button class="role-btn active" id="btnRoleClient">Client View</button>
+      <button class="role-btn" id="btnRoleFirm">Firm Staff / Advocate View</button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       PORTAL MAIN CONTAINER
+       ========================================================================== -->
+  <main class="portal-main">
+    <div class="container">
+
+      <!-- ====================================================================
+           VIEW A: CLIENT PORTAL (FOR CLIENTS AFTER LOGGING IN)
+           ==================================================================== -->
+      <div id="clientViewContainer">
+        
+        <!-- Matter Formal Court Header -->
+        <div class="formal-court-header">
+          <div class="matter-title-group">
+            <span class="matter-ref-tag" id="clientCaseRef">EN-2026-084</span>
+            <h1 class="serif-font" id="clientCaseTitle">CloudTech Solutions Sdn Bhd v. DataForge Cloud Ltd</h1>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Lead Counsel: <strong id="clientCasePartner" style="color: var(--color-pure-white);">Elvernel Leosard Raymond Abin, LL.B (UiTM)</strong>
+            </div>
+          </div>
+
+          <div style="text-align: right;">
+            <div style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-dim);">Current Legal Status</div>
+            <div id="clientCaseStatus" class="status-select" data-status="Settlement Negotiation" style="margin-top: 0.25rem; pointer-events: none;">
+              Settlement Negotiation
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Summary & Milestone Stage Tracker -->
+        <div class="case-summary-card">
+          <div class="case-summary-grid">
+            <div class="case-meta-block">
+              <span class="case-meta-label">Claim Forum</span>
+              <span class="case-meta-value" id="clientCaseForum">High Court of Malaya at Shah Alam</span>
+            </div>
+            <div class="case-meta-block">
+              <span class="case-meta-label">Quantum Claimed</span>
+              <span class="case-meta-value" id="clientCaseClaim" style="color: var(--color-pure-mint);">RM 1,850,000</span>
+            </div>
+            <div class="case-meta-block">
+              <span class="case-meta-label">Applicable Statute</span>
+              <span class="case-meta-value">Contracts Act 1950 (s.74 / s.75)</span>
+            </div>
+            <div class="case-meta-block">
+              <span class="case-meta-label">Communication Protocol</span>
+              <span class="case-meta-value">Formal Written Correspondence Only</span>
+            </div>
+          </div>
+
+          <!-- Visual Milestone Progress Bar -->
+          <div class="milestones-tracker">
+            <div class="milestones-header">Current Stage & Case Trajectory:</div>
+            <div class="milestones-step-list" id="milestonesStepList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Portal Navigation Tabs -->
+        <div class="portal-tabs">
+          <button class="portal-tab-btn active" data-tab="tab-client-docs">
+            📜 Correspondence & Legal Opinions <span class="tab-badge-count" id="clientDocCountBadge">5</span>
+          </button>
+          <button class="portal-tab-btn" data-tab="tab-client-meetings">
+            📅 Scheduled Meetings <span class="tab-badge-count" id="clientMeetingCountBadge">2</span>
+          </button>
+          <button class="portal-tab-btn" data-tab="tab-client-upload">
+            📤 Upload Documents to Case
+          </button>
+          <button class="portal-tab-btn" data-tab="tab-client-request-meet">
+            ⚖ Request Milestone Meeting
+          </button>
+        </div>
+
+        <!-- Tab 1: Formal Correspondence Area -->
+        <div class="portal-tab-pane" id="tab-client-docs">
+          <div style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 0.88rem; color: var(--color-text-muted);">
+              All communications are strictly documented as formal letters, written legal opinions, memoranda, agreements, and formal emails in reverse chronological order.
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Ref Number</th>
+                  <th>Document Type</th>
+                  <th>Title & Summary</th>
+                  <th>Date Issued</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="clientDocTableBody">
+                <!-- Rendered dynamically from StorageManager -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 2: Meetings Area -->
+        <div class="portal-tab-pane" id="tab-client-meetings" style="display: none;">
+          <div style="margin-bottom: 1.5rem; font-size: 0.88rem; color: var(--color-text-muted);">
+            In accordance with our formal UK-style practice, meetings are scheduled strictly at initial consultation and key milestones (filing, settlement, renegotiation).
+          </div>
+          <div class="meetings-grid" id="clientMeetingsContainer">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Upload Documents to Case -->
+        <div class="portal-tab-pane" id="tab-client-upload" style="display: none;">
+          <div class="consultation-form-card" style="max-width: 750px; margin: 0 auto;">
+            <h2 class="serif-font" style="font-size: 1.4rem; margin-bottom: 0.5rem;">Transmit Document to Case File</h2>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.75rem;">
+              Securely submit additional contracts, invoices, email transcripts, or technical logs to your presiding counsel.
+            </p>
+
+            <form id="clientUploadForm">
+              <div class="form-group">
+                <label class="form-label">Document Classification *</label>
+                <select id="clientDocTypeSelect" class="form-control" required>
+                  <option value="Agreement">SaaS Master Agreement / SLA Addendum</option>
+                  <option value="Evidence">Technical Downtime Log / Incident Report</option>
+                  <option value="Letter">Vendor Written Notice / Repudiation Letter</option>
+                  <option value="Financial">Invoices, Billing Records & Damages Ledger</option>
+                  <option value="Memorandum">Client Internal Factual Statement</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Select File (PDF, DOCX, XLSX, PNG) *</label>
+                <input type="file" id="clientDocFileInput" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Brief Evidentiary Context</label>
+                <textarea id="clientDocDesc" class="form-control" rows="3" placeholder="Explain how this document relates to the milestone breach or damages claim..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Transmit and File with Counsel →
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 4: Request Milestone Meeting -->
+        <div class="portal-tab-pane" id="tab-client-request-meet" style="display: none;">
+          <div class="consultation-form-card" style="max-width: 750px; margin: 0 auto;">
+            <h2 class="serif-font" style="font-size: 1.4rem; margin-bottom: 0.5rem;">Request a Key Milestone Meeting</h2>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.75rem;">
+              Client meetings are held strictly at decisive turning points. Please specify the milestone justification below.
+            </p>
+
+            <form id="requestMeetingForm">
+              <div class="form-group">
+                <label class="form-label">Milestone Reason *</label>
+                <select id="reqMeetingMilestone" class="form-control" required>
+                  <option value="Settlement Offer Review">Review Received Settlement Offer / Heads of Agreement</option>
+                  <option value="High Court Writ Filing">Approve High Court Writ of Summons & Statement of Claim</option>
+                  <option value="Contract Renegotiation">Finalize Restructured SaaS Terms & Liability Caps</option>
+                  <option value="Evidence Assessment">Urgent Assessment of Critical New Evidence</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Preferred Date *</label>
+                  <input type="date" id="reqMeetingDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Meeting Format *</label>
+                  <select id="reqMeetingFormat" class="form-control">
+                    <option value="In-Person (Shah Alam Chambers)">In-Person (Shah Alam Chambers, Boardroom 1)</option>
+                    <option value="Secured Video Conference">Secured Encrypted Video Conference</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Agenda Details & Issues for Counsel *</label>
+                <textarea id="reqMeetingNotes" class="form-control" rows="3" placeholder="Outline specific matters to be addressed during this milestone conference..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Submit Milestone Meeting Request →
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ====================================================================
+           VIEW B: FIRM STAFF PORTAL (SEPARATE STAFF VIEW)
+           ==================================================================== -->
+      <div id="firmViewContainer" style="display: none;">
+        
+        <div class="formal-court-header">
+          <div class="matter-title-group">
+            <span class="section-label" style="background: rgba(224, 82, 82, 0.15); color: #E05252; border-color: rgba(224, 82, 82, 0.3);">Firm Staff Registry</span>
+            <h1 class="serif-font">Chambers Case Management & Progress Registry</h1>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Presiding Counsel: <strong style="color: var(--color-pure-white);">Elvernel Leosard Raymond Abin, LL.B (UiTM)</strong> | Shah Alam Chambers
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-secondary" onclick="document.querySelector('[data-tab=tab-staff-requests]').click()">
+              New Requests Queue (<span id="staffRequestCountBadge">2</span>)
+            </button>
+          </div>
+        </div>
+
+        <!-- Staff Navigation Tabs -->
+        <div class="portal-tabs">
+          <button class="staff-tab-btn portal-tab-btn active" data-tab="tab-staff-tracker">
+            📊 Case Progress Tracker (Google Docs Style)
+          </button>
+          <button class="staff-tab-btn portal-tab-btn" data-tab="tab-staff-requests">
+            📥 Consultation Requests from Part 1
+          </button>
+          <button class="staff-tab-btn portal-tab-btn" data-tab="tab-staff-dispatch">
+            📤 Upload & Dispatch Formal Documents
+          </button>
+          <button class="staff-tab-btn portal-tab-btn" data-tab="tab-staff-schedule">
+            📅 Schedule Client Milestone Meeting
+          </button>
+        </div>
+
+        <!-- Tab 1: Case Progress Tracker (Google Docs / Spreadsheet style table) -->
+        <div class="staff-tab-pane" id="tab-staff-tracker">
+          <div class="staff-toolbar">
+            <div class="staff-filter-group">
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-pure-mint); text-transform: uppercase; letter-spacing: 0.1em;">Master Case Docket</span>
+              <span style="font-size: 0.75rem; color: var(--color-text-dim);">| Dropdowns update client case records in real time</span>
+            </div>
+            <input type="text" id="staffSearchInput" class="staff-table-search" placeholder="Search case ref, client, or status...">
+          </div>
+
+          <div class="table-container" style="border-radius: 0 0 8px 8px;">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Case Ref</th>
+                  <th>Client Name</th>
+                  <th>Matter Description</th>
+                  <th>Lead Partner</th>
+                  <th>Opened</th>
+                  <th>Work Status (Update Live)</th>
+                </tr>
+              </thead>
+              <tbody id="staffCaseTableBody">
+                <!-- Rendered dynamically with live status dropdowns -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 2: Consultation Requests Queue (From Part 1) -->
+        <div class="staff-tab-pane" id="tab-staff-requests" style="display: none;">
+          <div style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted);">
+            Prospective corporate client inquiries submitted via the Part 1 public website form. Accepting a request automatically creates a case in the master docket and generates account invite credentials.
+          </div>
+          <div id="staffRequestsContainer">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Upload & Dispatch Formal Documents -->
+        <div class="staff-tab-pane" id="tab-staff-dispatch" style="display: none;">
+          <div class="consultation-form-card" style="max-width: 800px; margin: 0 auto;">
+            <h2 class="serif-font" style="font-size: 1.4rem; margin-bottom: 0.5rem;">Dispatch Formal Legal Document</h2>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.75rem;">
+              Upload formal letters, written legal opinions, memoranda, agreements, or formal emails to the client's confidential dashboard.
+            </p>
+
+            <form id="staffDocDispatchForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Target Client Case *</label>
+                  <select id="dispatchCaseSelect" class="form-control" required>
+                    <option value="EN-2026-084">EN-2026-084: CloudTech Solutions Sdn Bhd</option>
+                    <option value="EN-2026-079">EN-2026-079: NexaPay Gateway Sdn Bhd</option>
+                    <option value="EN-2026-071">EN-2026-071: OmniRetail Technologies Sdn Bhd</option>
+                    <option value="EN-2026-062">EN-2026-062: BioHealth APAC Systems</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Document Classification *</label>
+                  <select id="dispatchDocType" class="form-control" required>
+                    <option value="Opinion">Written Legal Opinion</option>
+                    <option value="Letter">Formal Letter / Letter of Demand</option>
+                    <option value="Memorandum">Privileged Legal Memorandum</option>
+                    <option value="Agreement">Heads of Agreement / Settlement Deed</option>
+                    <option value="Email">Formal Electronic Legal Dispatch</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Document Title *</label>
+                <input type="text" id="dispatchTitle" class="form-control" placeholder="e.g. Formal Legal Opinion on Section 74 Damages Quantum" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Signing Partner *</label>
+                  <select id="dispatchPartner" class="form-control" required>
+                    <option value="Elvernel Leosard Raymond Abin, LL.B (UiTM)">Elvernel Leosard Raymond Abin, LL.B (UiTM)</option>
+                    <option value="Nik Najwa Nabilah Binti Nik Fakhzan Fahmi, LL.B (UiTM)">Nik Najwa Nabilah, LL.B (UiTM)</option>
+                    <option value="Muthusamy A/L Gopal, LL.B (UUM)">Muthusamy A/L Gopal, LL.B (UUM)</option>
+                    <option value="Vincent Chee, LL.B (UM)">Vincent Chee, LL.B (UM)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Executive Summary</label>
+                  <input type="text" id="dispatchSummary" class="form-control" placeholder="Brief 1-sentence synopsis for the client...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Formal Document Content / Legal Opinion *</label>
+                <textarea id="dispatchContent" class="form-control" rows="6" placeholder="Enter complete legal analysis, grounds under Contracts Act 1950, and instructions..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Dispatch Formal Document to Client Portal →
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 4: Schedule Client Milestone Meeting -->
+        <div class="staff-tab-pane" id="tab-staff-schedule" style="display: none;">
+          <div class="consultation-form-card" style="max-width: 800px; margin: 0 auto;">
+            <h2 class="serif-font" style="font-size: 1.4rem; margin-bottom: 0.5rem;">Schedule Milestone Conference</h2>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.75rem;">
+              Set up a formal in-person or secured video conference that instantly publishes to the client's dashboard.
+            </p>
+
+            <form id="staffScheduleMeetingForm">
+              <div class="form-group">
+                <label class="form-label">Client Matter *</label>
+                <select id="schedCaseSelect" class="form-control" required>
+                  <option value="EN-2026-084">EN-2026-084: CloudTech Solutions Sdn Bhd</option>
+                  <option value="EN-2026-079">EN-2026-079: NexaPay Gateway Sdn Bhd</option>
+                  <option value="EN-2026-071">EN-2026-071: OmniRetail Technologies</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Meeting Title & Milestone *</label>
+                <input type="text" id="schedTitle" class="form-control" placeholder="e.g. Milestone 4: Heads of Agreement Terms Discussion" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Date *</label>
+                  <input type="date" id="schedDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Time *</label>
+                  <input type="text" id="schedTime" class="form-control" placeholder="10:30 AM (MYT)" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Format / Venue *</label>
+                  <select id="schedFormat" class="form-control" required>
+                    <option value="In-Person (Level 3 Boardroom, Shah Alam Chambers)">In-Person (Level 3 Boardroom, Shah Alam Chambers)</option>
+                    <option value="Secured Encrypted Video Conference">Secured Encrypted Video Conference</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Presiding Advocate *</label>
+                  <select id="schedPartner" class="form-control" required>
+                    <option value="Elvernel Leosard Raymond Abin, LL.B (UiTM)">Elvernel Leosard Raymond Abin, LL.B (UiTM)</option>
+                    <option value="Nik Najwa Nabilah, LL.B (UiTM)">Nik Najwa Nabilah, LL.B (UiTM)</option>
+                    <option value="Muthusamy A/L Gopal, LL.B (UUM)">Muthusamy A/L Gopal, LL.B (UUM)</option>
+                    <option value="Vincent Chee, LL.B (UM)">Vincent Chee, LL.B (UM)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Agenda & Milestone Deliverables *</label>
+                <textarea id="schedAgenda" class="form-control" rows="3" placeholder="Outline specific topics, documents to be executed, and decisions required..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Publish Meeting to Client Dashboard →
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       MODALS: DOCUMENT VIEWER & CLIENT ACCOUNT ONBOARDING
+       ========================================================================== -->
+  
+  <!-- Document Viewer Modal (Formal Chambers Letterhead) -->
+  <div class="modal-overlay" id="docViewerModal">
+    <div class="modal-card" style="max-width: 820px;">
+      <button class="modal-close-btn" id="docViewerCloseBtn">✕</button>
+      
+      <div class="formal-doc-body">
+        <div class="formal-letterhead">
+          <div class="letterhead-title">ELVERNEL, NAJWA & CO.</div>
+          <div class="letterhead-subtitle">ADVOCATES & SOLICITORS</div>
+          <div class="letterhead-address">
+            No. 12, Jalan Kristal K7/K, Seksyen 7, 40000 Shah Alam, Selangor, Malaysia<br>
+            Tel: +60 3-9876 5432 | Fax: +60 3-9876 5433 | contact@elvernelnajwa.com
+          </div>
+        </div>
+
+        <div class="formal-doc-meta">
+          <div>
+            <strong>REF:</strong> <span id="viewDocRefNumber" style="font-family: monospace;">EN/LIT/2026/084</span><br>
+            <strong>TYPE:</strong> <span id="viewDocType">WRITTEN OPINION</span>
+          </div>
+          <div style="text-align: right;">
+            <strong>DATE:</strong> <span id="viewDocDate">18 Jan 2026</span><br>
+            <strong>STATUS:</strong> <span style="color: #38b000; font-weight: 700;">OFFICIALLY ISSUED</span>
+          </div>
+        </div>
+
+        <h3 id="viewDocTitle" style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--color-cape-cod); margin-bottom: 1.25rem;">
+          Document Subject
+        </h3>
+
+        <div id="viewDocContent" style="font-size: 0.92rem; color: #222; margin-bottom: 2rem; line-height: 1.8;">
+          Document content...
+        </div>
+
+        <div class="formal-signature-box">
+          <div style="font-size: 0.85rem; color: #555;">Respectfully submitted,</div>
+          <div class="advocate-signature">Elvernel, Najwa & Co.</div>
+          <div style="font-weight: 700; color: #111; margin-top: 0.35rem;" id="viewDocSignatory">Elvernel Leosard Raymond Abin, LL.B (UiTM)</div>
+          <div style="font-size: 0.78rem; color: #666;">Advocate & Solicitor of the High Court of Malaya</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Account Invite Modal (Generated when Firm Accepts a Request) -->
+  <div class="modal-overlay" id="clientInviteModal">
+    <div class="modal-card">
+      <span class="section-label" style="background: rgba(56, 176, 0, 0.15); color: #38b000; border-color: rgba(56, 176, 0, 0.3);">Case Accepted & Created</span>
+      <h2 class="serif-font" style="font-size: 1.5rem; margin: 0.75rem 0 1rem;">Client Onboarding Link Generated</h2>
+      <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+        Matter <strong id="inviteCaseRef" style="color: var(--color-pure-mint); font-family: monospace;">EN-2026-085</strong> for <strong id="inviteClientName" style="color: var(--color-pure-white);">Client</strong> has been officially added to the Master Case Docket.
+      </p>
+
+      <div style="margin-bottom: 1.5rem;">
+        <label class="form-label">Client Direct Access Link:</label>
+        <input type="text" id="inviteLinkText" class="form-control" readonly style="font-family: monospace; font-size: 0.85rem; color: var(--color-pure-mint);">
+      </div>
+
+      <div style="background: rgba(6, 24, 36, 0.8); border-left: 3px solid var(--color-pure-mint); padding: 1rem; font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 1.75rem; line-height: 1.6;">
+        <strong style="color: var(--color-pure-white);">Formal Protocol:</strong> In production, this link is transmitted accompanied by the firm's formal Letter of Engagement and Malaysian Personal Data Protection Act (PDPA 2010) consent schedule.
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+        <button class="btn btn-primary" onclick="document.getElementById('clientInviteModal').classList.remove('active')">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer" style="padding-top: 2rem;">
+    <div class="container" style="text-align: center; font-size: 0.78rem; color: var(--color-text-dim);">
+      Elvernel, Najwa & Co. Advocates & Solicitors • Encrypted Case Management System • Confidential & Privileged
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/portal.js"></script>
+</body>
+</html>
